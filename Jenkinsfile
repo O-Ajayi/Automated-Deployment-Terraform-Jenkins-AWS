@@ -14,25 +14,24 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
     }
     
+//     stages {
+//         stage("checkout") {
+//             steps {
+//                 echo 'Checkout the scm server for codes'
+//                  git "https://github.com/O-Ajayi/Automated-Deployment-Terraform-Jenkins-AWS.git"
+//             }
+
     stages {
         stage("checkout") {
             steps {
-                echo 'Checkout the scm server for codes'
-                 git "https://github.com/O-Ajayi/Automated-Deployment-Terraform-Jenkins-AWS.git"
+                 script{
+                        dir("terraform")
+                        {
+                            git "https://github.com/O-Ajayi/Automated-Deployment-Terraform-Jenkins-AWS.git"
+                        }
+                    }
+                }
             }
-
-
-//     stages {
-//         stage('checkout') {
-//             steps {
-//                  script{
-//                         dir("terraform")
-//                         {
-//                             git "https://github.com/O-Ajayi/Automated-Deployment-Terraform-Jenkins-AWS.git"
-//                         }
-//                     }
-//                 }
-//             }
 
 //         stage('Plan') {
 //             when {
