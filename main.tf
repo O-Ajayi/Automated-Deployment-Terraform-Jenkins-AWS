@@ -1,4 +1,6 @@
 # --- root/main.tf ---
+# This is a module dir for managing  this project
+
 
 module "networking" {
   source       = "./networking"
